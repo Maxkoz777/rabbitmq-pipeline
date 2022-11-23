@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SenderConfig {
     @Value("${queue.name}")
-    private String message;
+    private String queueName;
 
     @Bean
     public Queue queue() {
-        return new Queue(message, true);
+        return new Queue(queueName, true);
     }
 }
