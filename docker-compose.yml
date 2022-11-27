@@ -15,17 +15,37 @@ services:
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    deploy:
+      resources:
+        limits:
+          cpus: 0.50
+          memory: 512M
+        reservations:
+          cpus: 0.25
+          memory: 128M
   producer:
     container_name: producer
-    image: maxkoz777/defendant_rabbit_producer:latest
+#    image: maxkoz777/defendant_rabbit_producer:latest
+    build: ./rabbitmq-producer
     ports:
       - "8081:8081"
     depends_on:
       - rabbit
     restart: on-failure
+    environment:
+      IP: 192.168.50.60
+      RABBIT_USERNAME: guest
+      RABBIT_PASSWORD: guest
+      RABBIT_PORT: 5672
+      QUEUE_NAME: test
+      DB_USER: postgres
+      DB_PASSWORD: password
+      DB_NAME: justice
+      DB_PORT: 5432
   consumer:
     container_name: consumer
-    image: maxkoz777/defendant_rabbit_consumer:latest
+#    image: maxkoz777/defendant_rabbit_consumer:latest
+    build: ./rabbitmq-consumer
     ports:
       - "8080:8080"
     depends_on:
@@ -33,6 +53,16 @@ services:
       - postgres
       - producer
     restart: on-failure
+    environment:
+      IP: 192.168.50.60
+      RABBIT_USERNAME: guest
+      RABBIT_PASSWORD: guest
+      RABBIT_PORT: 5672
+      QUEUE_NAME: test
+      DB_USER: postgres
+      DB_PASSWORD: password
+      DB_NAME: justice
+      DB_PORT: 5432
   postgres:
     container_name: postgres
     image: postgres:alpine

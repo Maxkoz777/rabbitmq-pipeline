@@ -3,9 +3,6 @@ I
 rabbitmq-consumer/HELP.md,5/3/5314e2e5768490318b536e19c0911c37a88f50f2
 b
 2.idea/libraries/Maven__org_yaml_snakeyaml_1_30.xml,3/c/3c9053362206afff74805f76190a4db80d948973
-:
-
-.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
 h
 8.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml,d/7/d748d8766080efc90fdc1cab153cb0f95a859ff1
 Ä
@@ -238,8 +235,6 @@ _rabbitmq-producer/src/main/java/com/example/rabbitmqproducer/initialization/Bro
 \rabbitmq-producer/src/main/java/com/example/rabbitmqproducer/configuration/SenderConfig.java,1/0/10ec5a50a63e850b9245906ec11c7f87c278eaa8
 é
 ^rabbitmq-producer/src/main/java/com/example/rabbitmqproducer/controller/MessageController.java,4/5/455320f391ca346ed1fb35df27bb30a760994da8
-á
-Wrabbitmq-producer/src/main/java/com/example/rabbitmqproducer/publisher/QueueSender.java,e/6/e662231040edb0f8673dade55c9fbe1b3fdab364
 ã
 [rabbitmq-consumer/src/main/java/com/example/rabbitmqconsumer/repository/HellRepository.java,2/9/2969125268adc5efcd81c4eea32a55ae339430ec
 è
