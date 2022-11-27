@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.27.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: consumer
+  name: consumer
+spec:
+  replicas: 3
+  containers:
+    - env:
+        - name: DB_NAME
+          value: justice
+        - name: DB_PASSWORD
+          value: password
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_USER
+          value: postgres
+        - name: IP
+          value: 192.168.50.60
+        - name: QUEUE_NAME
+          value: test
+        - name: RABBIT_PASSWORD
+          value: guest
+        - name: RABBIT_PORT
+          value: "5672"
+        - name: RABBIT_USERNAME
+          value: guest
+      image: maxkoz777/defendant_rabbit_consumer:latest
+      name: consumer
+      ports:
+        - containerPort: 8080
+      resources: {}
+  restartPolicy: OnFailure
+status: {}
